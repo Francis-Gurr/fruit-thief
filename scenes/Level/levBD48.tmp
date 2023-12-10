@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxlpadwjwf5r5"]
+
+[ext_resource type="PackedScene" uid="uid://bylkh3jtg3sg" path="res://scenes/Level/floor.tscn" id="1_anlja"]
+[ext_resource type="PackedScene" uid="uid://bntm201kiwsfv" path="res://scenes/Level/carrot.tscn" id="2_2tqht"]
+[ext_resource type="Script" path="res://scenes/Level/Timer.gd" id="3_bpqgp"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(587, 633)
+
+[node name="Carrot" parent="." instance=ExtResource("2_2tqht")]
+position = Vector2(525, -70)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("3_bpqgp")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

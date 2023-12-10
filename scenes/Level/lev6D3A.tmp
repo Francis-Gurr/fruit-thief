@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxlpadwjwf5r5"]
+
+[ext_resource type="PackedScene" uid="uid://bylkh3jtg3sg" path="res://scenes/Level/floor.tscn" id="1_anlja"]
+[ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_ap3vy"]
+[ext_resource type="Script" path="res://scenes/Level/Timer.gd" id="3_bpqgp"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ap3vy")
+
+[node name="Floor" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(587, 633)
+
+[node name="Floor2" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(-24, 438)
+rotation = 1.5708
+
+[node name="Floor3" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(1176, 485)
+rotation = -1.5708
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+script = ExtResource("3_bpqgp")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 368.0
+offset_top = 4.0
+offset_right = 706.0
+offset_bottom = 64.0
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
