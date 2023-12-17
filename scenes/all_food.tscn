@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjn88yxmd1cyh"]
+
+[sub_resource type="GDScript" id="GDScript_anyjm"]
+script/source = "extends Node
+
+const carrot = preload(\"res://scenes/food/carrot.tscn\")
+const apple = preload(\"res://scenes/food/apple.tscn\")
+const banana = preload(\"res://scenes/food/banana.tscn\")
+const pickle = preload(\"res://scenes/food/pickle.tscn\")
+const allFood = [carrot, apple, banana, pickle]
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+func getRandomFood() -> Food:
+	randomize()
+	return allFood[randi() % allFood.size()].instantiate()
+"
+
+[node name="allFood" type="Node"]
+script = SubResource("GDScript_anyjm")

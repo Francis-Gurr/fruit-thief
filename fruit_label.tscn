@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxc82075cti1g"]
+
+[ext_resource type="Script" path="res://bounceTextEffect.gd" id="2_82ylv"]
+[ext_resource type="Script" path="res://fruit_label.gd" id="2_nw14g"]
+[ext_resource type="Theme" uid="uid://c7l2y1esbygof" path="res://label.tres" id="4_vp5tw"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ptcip"]
+script = ExtResource("2_82ylv")
+
+[sub_resource type="Animation" id="Animation_g0uwv"]
+resource_name = "text_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6gjs"]
+_data = {
+"text_animation": SubResource("Animation_g0uwv")
+}
+
+[node name="FruitLabel" type="RichTextLabel"]
+offset_left = 63.0
+offset_top = 19.0
+offset_right = 310.0
+offset_bottom = 94.0
+theme = ExtResource("4_vp5tw")
+bbcode_enabled = true
+text = "testt"
+custom_effects = [SubResource("RichTextEffect_ptcip")]
+script = ExtResource("2_nw14g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n6gjs")
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 73.0
+offset_right = 318.0
+offset_bottom = 224.0
+theme = ExtResource("4_vp5tw")
+text = "test"

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxlpadwjwf5r5"]
+
+[ext_resource type="PackedScene" uid="uid://bylkh3jtg3sg" path="res://scenes/Level/floor.tscn" id="1_anlja"]
+[ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_ap3vy"]
+[ext_resource type="PackedScene" uid="uid://riok7bfbnm2k" path="res://scenes/Level/background.tscn" id="2_cu1x5"]
+[ext_resource type="PackedScene" uid="uid://cjn88yxmd1cyh" path="res://scenes/all_food.tscn" id="4_j42nt"]
+[ext_resource type="PackedScene" uid="uid://b281ae3gf1wrd" path="res://scenes/Level/basket.tscn" id="5_p1ykg"]
+[ext_resource type="Texture2D" uid="uid://vta1xkvomlbd" path="res://assets/sprites/scroll.png" id="6_8heue"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ap3vy")
+
+[node name="Background" parent="." instance=ExtResource("2_cu1x5")]
+
+[node name="Floor" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(584, 672)
+
+[node name="allFood" parent="." instance=ExtResource("4_j42nt")]
+
+[node name="Basket" parent="." instance=ExtResource("5_p1ykg")]
+position = Vector2(686, 334)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(526, 523)
+scale = Vector2(0.227778, 0.227778)
+texture = ExtResource("6_8heue")
+
+[node name="Label" type="RichTextLabel" parent="Sprite2D"]
+offset_left = -215.0
+offset_top = -114.0
+offset_right = 207.0
+offset_bottom = 114.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true

@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxlpadwjwf5r5"]
+
+[ext_resource type="PackedScene" uid="uid://bylkh3jtg3sg" path="res://scenes/Level/floor.tscn" id="1_anlja"]
+[ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_ap3vy"]
+[ext_resource type="Script" path="res://scripts/allFood.gd" id="4_d5lxu"]
+
+[sub_resource type="GDScript" id="GDScript_jvv4j"]
+script/source = "extends Timer
+
+const carrot = preload(\"res://scenes/food/carrot.tscn\")
+const apple = preload(\"res://scenes/food/apple.tscn\")
+const banana = preload(\"res://scenes/food/banana.tscn\")
+const broccoli = preload(\"res://scenes/food/broccoli.tscn\")
+const fallingObjects = [carrot, apple, banana, broccoli]
+
+var currentObject
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_timeout():
+	pass
+	#randomize()
+	#var object = fallingObjects[randi() % fallingObjects.size()].instantiate()
+	#currentObject = object
+	#object.position = Vector2(randi_range(100, 1000), -20)
+	#object.rotation_degrees = randi() % 360
+	#$\"../Label\".text = currentObject.get_name()
+	#add_child(object)
+	#wait_time = randi_range(0,1)
+"
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ap3vy")
+
+[node name="Floor" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(587, 633)
+
+[node name="Floor2" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(-24, 438)
+rotation = 1.5708
+
+[node name="Floor3" parent="." instance=ExtResource("1_anlja")]
+position = Vector2(1176, 485)
+rotation = -1.5708
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+script = SubResource("GDScript_jvv4j")
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 418.0
+offset_top = 586.0
+offset_right = 756.0
+offset_bottom = 646.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+
+[node name="allFood" type="Node" parent="."]
+script = ExtResource("4_d5lxu")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

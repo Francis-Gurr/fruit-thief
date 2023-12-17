@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b281ae3gf1wrd"]
+
+[ext_resource type="Texture2D" uid="uid://cnog2otb00ena" path="res://assets/sprites/basket.png" id="1_d5nd6"]
+[ext_resource type="Texture2D" uid="uid://d26chmrqsxi11" path="res://assets/sprites/basket_front.png" id="2_nht36"]
+
+[node name="Basket" type="StaticBody2D"]
+
+[node name="Basket" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_d5nd6")
+
+[node name="BasketFront" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("2_nht36")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-27, -516)
+polygon = PackedVector2Array(-1385, 266, -1407, 307, -1402, 354, -1385, 382, -1377, 463, -1363, 560, -1341, 660, -1255, 829, -1194, 902, -1102, 976, -1002, 1035, -902, 1065, -674, 1079, -338, 1079, -2, 1073, 306, 1062, 534, 1087, 840, 1076, 1028, 1076, 1209, 1037, 1295, 965, 1381, 837, 1439, 707, 1475, 615, 1501, 487, 1514, 357, 1539, 324, 1545, 279, 1528, 243, 1420, 618, 1261, 915, 1162, 1014, -925, 1014, -1115, 876, -1304, 630)
